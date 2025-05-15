@@ -1,0 +1,19 @@
+@model AgriEnergyConnect.Models.Farmer
+@{
+    ViewData["Title"] = "Delete Farmer";
+}
+
+<h2>Delete Farmer</h2>
+
+<h4>Are you sure you want to delete this farmer?</h4>
+<div>
+    <strong>Name:</strong> @Model.FullName<br />
+    <strong>Email:</strong> @Model.Email<br />
+    <strong>Location:</strong> @Model.Location
+</div>
+
+<form asp-action="DeleteFarmerConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Farmers" class="btn btn-secondary">Cancel</a>
+</form>

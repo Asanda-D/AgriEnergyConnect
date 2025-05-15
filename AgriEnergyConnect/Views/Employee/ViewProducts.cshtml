@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "View Products by Farmer";
+    var products = ViewBag.Products as List<AgriEnergyConnect.Models.Product>;
+}
+
+<h2>View Products by Farmer</h2>
+
+<form method="get" asp-action="ViewProducts">
+    <div>
+        <label>Farmer:</label>
+        <select name="farmerId" asp-items="ViewBag.Farmers" class="form-control" required>
+            <option value="">-- Select Farmer --</option>
+        </select>
+    </div>
+    <div>
+        <label>Product Name:</label>
+        <input type="text" name="nameFilter" class="form-control" />
+    </div>
+    <div>
+        <label>Category:</label>
+        <input type="text" name="categoryFilter" class="form-control" />
+    </div>
+    <div>
+        <label>From Date:</label>
+        <input type="date" name="fromDate" class="form-control" />
+    </div>
+    <div>
+        <label>To Date:</label>
+        <input type="date" name="toDate" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<hr />
+
+@if (products != null && products.Any())
+{
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Production Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Category</td>
+                    <td>@product.ProductionDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.Farmers != null)
+{
+    <p>No products to display.</p>
+}

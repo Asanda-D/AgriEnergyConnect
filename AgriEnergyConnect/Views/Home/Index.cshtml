@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to AgriEnergyConnect</h1>
+
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        if (User.IsInRole("Farmer"))
+        {
+            <p>Welcome, Farmer!</p>
+            <a class="btn btn-primary" asp-controller="Farmer" asp-action="Products">My Products</a>
+            <a class="btn btn-success" asp-controller="Farmer" asp-action="AddProduct">Add New Product</a>
+        }
+        else if (User.IsInRole("Employee"))
+        {
+            <p>Welcome, Employee!</p>
+            <a class="btn btn-primary" asp-controller="Employee" asp-action="Farmers">View Farmers</a>
+            <a class="btn btn-success" asp-controller="Employee" asp-action="AddFarmer">Add Farmer</a>
+            <a class="btn btn-info" asp-controller="Employee" asp-action="ViewProducts">View All Products</a>
+        }
+        else
+        {
+            <p>You are logged in but do not have an assigned role.</p>
+        }
+    }
+    else
+    {
+        <p>Please log in to access your dashboard.</p>
+        <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    }
+</div>
