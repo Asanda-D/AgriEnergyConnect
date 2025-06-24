@@ -171,4 +171,43 @@ public class EmployeeController : Controller
 
         return View();
     }
+
+    // GET: Employee/EditFarmer/5
+    public async Task<IActionResult> EditFarmer(int? id)
+    {
+        if (id == null)
+            return NotFound();
+
+        var farmer = await _context.Farmers.FindAsync(id);
+        if (farmer == null)
+            return NotFound();
+
+        return View(farmer);
+    }
+
+    // POST: Employee/EditFarmer/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> EditFarmer(int id, Farmer updatedFarmer)
+    {
+        if (id != updatedFarmer.Id)
+            return NotFound();
+
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _context.Update(updatedFarmer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Farmers));
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Farmers.Any(f => f.Id == updatedFarmer.Id))
+                    return NotFound();
+                throw;
+            }
+        }
+        return View(updatedFarmer);
+    }
 }

@@ -24,4 +24,4 @@ namespace AgriEnergyConnect.Models
         public string ConfirmPassword { get; set; }
     }
 
-}
+} 

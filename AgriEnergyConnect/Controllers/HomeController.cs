@@ -14,22 +14,9 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
-{
-    if (User.Identity?.IsAuthenticated ?? false)
     {
-        if (User.IsInRole("Farmer"))
-        {
-            return RedirectToAction("Products", "Farmer");
-        }
-        else if (User.IsInRole("Employee"))
-        {
-            return RedirectToAction("Farmers", "Employee");
-        }
+        return View();
     }
-
-    // Not logged in or no matching role — show default home page
-    return View();
-}
 
     public IActionResult Privacy()
     {

@@ -1,17 +1,18 @@
-@model AgriEnergyConnect.Models.FarmerViewModel
+@model AgriEnergyConnect.Models.Farmer
 
 @{
-    ViewData["Title"] = "Add Farmer";
+    ViewData["Title"] = "Edit Farmer Profile";
 }
 
 <div class="container mt-5">
     <div class="card shadow-sm">
         <div class="card-header bg-success text-white">
-            <h4 class="mb-0">Add New Farmer</h4>
+            <h4 class="mb-0">Edit Farmer Profile</h4>
         </div>
         <div class="card-body">
+            <form asp-action="EditFarmer" method="post">
+                <input type="hidden" asp-for="Id" />
 
-            <form asp-action="AddFarmer" method="post">
                 <div asp-validation-summary="All" class="text-danger mb-3"></div>
 
                 <div class="form-group mb-3">
@@ -22,34 +23,21 @@
 
                 <div class="form-group mb-3">
                     <label asp-for="Email" class="form-label"></label>
-                    <input asp-for="Email" class="form-control" />
+                    <input asp-for="Email" class="form-control" readonly />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
-                <div class="form-group mb-3">
+                <div class="form-group mb-4">
                     <label asp-for="Location" class="form-label"></label>
                     <input asp-for="Location" class="form-control" />
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label asp-for="Password" class="form-label"></label>
-                    <input asp-for="Password" class="form-control" type="password" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-
-                <div class="form-group mb-4">
-                    <label asp-for="ConfirmPassword" class="form-label"></label>
-                    <input asp-for="ConfirmPassword" class="form-control" type="password" />
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                </div>
-
                 <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-success">Create Farmer</button>
-                    <a asp-action="Farmers" class="btn btn-outline-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-success text-white">Update</button>
+                    <a asp-action="Farmers" class="btn btn-secondary">Cancel</a>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

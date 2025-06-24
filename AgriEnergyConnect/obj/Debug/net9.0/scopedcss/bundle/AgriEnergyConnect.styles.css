@@ -5,23 +5,32 @@ for details on configuring this project to bundle and minify static web assets. 
 a.navbar-brand[b-5gmpmslybv] {
   white-space: normal;
   text-align: center;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 a[b-5gmpmslybv] {
-  color: #0077cc;
+  color: #0d6efd;
+  text-decoration: none;
+}
+a:hover[b-5gmpmslybv] {
+  text-decoration: underline;
 }
 
 .btn-primary[b-5gmpmslybv] {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #198754;
+  border-color: #157347;
+}
+.btn-primary:hover[b-5gmpmslybv] {
+  background-color: #157347;
+  border-color: #145c32;
 }
 
-.nav-pills .nav-link.active[b-5gmpmslybv], .nav-pills .show > .nav-link[b-5gmpmslybv] {
+.nav-pills .nav-link.active[b-5gmpmslybv],
+.nav-pills .show > .nav-link[b-5gmpmslybv] {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #198754;
+  border-color: #157347;
 }
 
 .border-top[b-5gmpmslybv] {
@@ -41,9 +50,9 @@ button.accept-policy[b-5gmpmslybv] {
 }
 
 .footer[b-5gmpmslybv] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  background-color: #198754;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
 }

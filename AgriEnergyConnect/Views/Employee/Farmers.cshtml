@@ -1,32 +1,37 @@
 @model IEnumerable<AgriEnergyConnect.Models.Farmer>
+
 @{
     ViewData["Title"] = "All Farmers";
 }
 
-<h2>All Farmers</h2>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>All Registered Farmers</h2>
+        <a asp-action="AddFarmer" class="btn btn-success">Add New Farmer</a>
+    </div>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Location</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var farmer in Model)
-        {
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-dark">
             <tr>
-                <td>@farmer.FullName</td>
-                <td>@farmer.Email</td>
-                <td>@farmer.Location</td>
-                <td>
-                    <a asp-action="DeleteFarmer" asp-route-id="@farmer.Id" class="btn btn-danger btn-sm">Delete</a>
-                </td>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Location</th>
+                <th style="width: 150px;">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
-
-<a asp-action="AddFarmer" class="btn btn-primary">Add New Farmer</a>
+        </thead>
+        <tbody>
+            @foreach (var farmer in Model)
+            {
+                <tr>
+                    <td>@farmer.FullName</td>
+                    <td>@farmer.Email</td>
+                    <td>@farmer.Location</td>
+                    <td>
+                        <a asp-action="EditFarmer" asp-route-id="@farmer.Id" class="btn btn-sm btn-outline-warning">Edit</a>
+                        <a asp-action="DeleteFarmer" asp-route-id="@farmer.Id" class="btn btn-sm btn-outline-danger ms-2">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

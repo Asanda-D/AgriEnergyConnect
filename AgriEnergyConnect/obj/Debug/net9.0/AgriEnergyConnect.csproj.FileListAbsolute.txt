@@ -212,7 +212,6 @@ C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
-C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\tim0h5o8lg-b9sayid5wm.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\ai8kqf6rg6-61n19gt1b8.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\l07tud90ta-xtxxf3hu2r.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\9l7v1u1620-bqjiyaj88i.gz
@@ -274,8 +273,6 @@ C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\jphvckq20c-muycvpuwrr.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\15i7u6ze4o-87fc7y1x7t.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\3k4i9qisiz-mlv21k5csn.gz
-C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\5jrxi105t7-zqgekinimp.gz
-C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\75csf9ev7d-zqgekinimp.gz
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -410,3 +407,7 @@ C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\bin\Debug\net9
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\AgriEnergyConnect.sourcelink.json
+C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\tim0h5o8lg-oe60tdgrme.gz
+C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\5jrxi105t7-qhv1d5p0zj.gz
+C:\Users\lab_services_student\AgriEnergyConnect\AgriEnergyConnect\obj\Debug\net9.0\compressed\75csf9ev7d-qhv1d5p0zj.gz

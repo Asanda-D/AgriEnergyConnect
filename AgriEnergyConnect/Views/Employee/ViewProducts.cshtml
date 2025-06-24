@@ -3,60 +3,79 @@
     var products = ViewBag.Products as List<AgriEnergyConnect.Models.Product>;
 }
 
-<h2>View Products by Farmer</h2>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h4>View Products by Farmer</h4>
+        </div>
+        <div class="card-body">
 
-<form method="get" asp-action="ViewProducts">
-    <div>
-        <label>Farmer:</label>
-        <select name="farmerId" asp-items="ViewBag.Farmers" class="form-control" required>
-            <option value="">-- Select Farmer --</option>
-        </select>
-    </div>
-    <div>
-        <label>Product Name:</label>
-        <input type="text" name="nameFilter" class="form-control" />
-    </div>
-    <div>
-        <label>Category:</label>
-        <input type="text" name="categoryFilter" class="form-control" />
-    </div>
-    <div>
-        <label>From Date:</label>
-        <input type="date" name="fromDate" class="form-control" />
-    </div>
-    <div>
-        <label>To Date:</label>
-        <input type="date" name="toDate" class="form-control" />
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">Filter</button>
-</form>
+            <form method="get" asp-action="ViewProducts">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label>Farmer:</label>
+                        <select name="farmerId" asp-items="ViewBag.Farmers" class="form-control" required>
+                            <option value="">-- Select Farmer --</option>
+                        </select>
+                    </div>
 
-<hr />
+                    <div class="col-md-4">
+                        <label>Product Name:</label>
+                        <input type="text" name="nameFilter" class="form-control" placeholder="e.g. Corn" />
+                    </div>
 
-@if (products != null && products.Any())
-{
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Production Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var product in products)
+                    <div class="col-md-4">
+                        <label>Category:</label>
+                        <input type="text" name="categoryFilter" class="form-control" placeholder="e.g. Vegetable" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label>From Date:</label>
+                        <input type="date" name="fromDate" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>To Date:</label>
+                        <input type="date" name="toDate" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-success w-100">Filter</button>
+                    </div>
+                </div>
+            </form>
+
+            <hr />
+
+            @if (products != null && products.Any())
             {
-                <tr>
-                    <td>@product.Name</td>
-                    <td>@product.Category</td>
-                    <td>@product.ProductionDate.ToShortDateString()</td>
-                </tr>
+                <table class="table table-bordered table-striped mt-3">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Production Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in products)
+                        {
+                            <tr>
+                                <td>@product.Name</td>
+                                <td>@product.Category</td>
+                                <td>@product.ProductionDate.ToShortDateString()</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             }
-        </tbody>
-    </table>
-}
-else if (ViewBag.Farmers != null)
-{
-    <p>No products to display.</p>
-}
+            else if (ViewBag.Farmers != null)
+            {
+                <p class="text-muted mt-3">No products to display for the selected farmer and filters.</p>
+            }
+
+        </div>
+    </div>
+</div>

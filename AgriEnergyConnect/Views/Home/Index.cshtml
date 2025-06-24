@@ -2,33 +2,62 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to AgriEnergyConnect</h1>
+<div class="container mt-5">
+    <div class="jumbotron bg-light p-5 rounded shadow-sm text-center">
+        <h1 class="display-4 mb-4">🌱 Welcome to <strong>AgriEnergyConnect</strong></h1>
+        <p class="lead">Connecting farmers and employees to promote sustainable agriculture and energy collaboration.</p>
+        <hr class="my-4" />
 
-    @if (User.Identity?.IsAuthenticated ?? false)
-    {
-        if (User.IsInRole("Farmer"))
+        @if (User.Identity?.IsAuthenticated ?? false)
         {
-            <p>Welcome, Farmer!</p>
-            <a class="btn btn-primary" asp-controller="Farmer" asp-action="Products">My Products</a>
-            <a class="btn btn-success" asp-controller="Farmer" asp-action="AddProduct">Add New Product</a>
-        }
-        else if (User.IsInRole("Employee"))
-        {
-            <p>Welcome, Employee!</p>
-            <a class="btn btn-primary" asp-controller="Employee" asp-action="Farmers">View Farmers</a>
-            <a class="btn btn-success" asp-controller="Employee" asp-action="AddFarmer">Add Farmer</a>
-            <a class="btn btn-info" asp-controller="Employee" asp-action="ViewProducts">View All Products</a>
+            if (User.IsInRole("Farmer"))
+            {
+                <div class="mt-4">
+                    <h5 class="text-dark">👨‍🌾 Hello Farmer!</h5>
+                    <p>Manage your agricultural products with ease.</p>
+                    <a class="btn btn-outline-dark me-2" asp-controller="Farmer" asp-action="Products">
+                        My Products
+                    </a>
+                    <a class="btn btn-success" asp-controller="Farmer" asp-action="AddProduct">
+                        Add New Product
+                    </a>
+                </div>
+            }
+            else if (User.IsInRole("Employee"))
+            {
+                <div class="mt-4">
+                    <h5 class="text-dark">👷 Hello Employee!</h5>
+                    <p>Manage farmers and oversee production data.</p>
+                    <a class="btn btn-outline-dark me-2" asp-controller="Employee" asp-action="Farmers">
+                        View Farmers
+                    </a>
+                    <a class="btn btn-outline-success me-2" asp-controller="Employee" asp-action="AddFarmer">
+                        Add Farmer
+                    </a>
+                    <a class="btn btn-outline-info" asp-controller="Employee" asp-action="ViewProducts">
+                        View All Products
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning mt-4">
+                    You are logged in but do not have an assigned role.
+                </div>
+            }
         }
         else
         {
-            <p>You are logged in but do not have an assigned role.</p>
+            <div class="mt-4">
+                <p>Please log in or register to access your dashboard.</p>
+                <a class="btn btn-primary me-2" asp-area="Identity" asp-page="/Account/Login"> Login</a>
+                <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Register"> Register</a>
+            </div>
         }
-    }
-    else
-    {
-        <p>Please log in to access your dashboard.</p>
-        <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    }
+    </div>
 </div>
+
+
+
+
+<!-- All emojis were retrived from: https://emojipedia.org/ -->

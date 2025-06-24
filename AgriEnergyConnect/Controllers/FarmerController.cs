@@ -59,4 +59,82 @@ public class FarmerController : Controller
         }
         return View(product);
     }
+
+    // GET: Farmer/EditProduct/5
+    public async Task<IActionResult> EditProduct(int? id)
+    {
+        if (id == null)
+            return NotFound();
+
+        var product = await _context.Products.FindAsync(id);
+        if (product == null)
+            return NotFound();
+
+        // Ensure the product belongs to the logged-in farmer
+        var user = await _userManager.GetUserAsync(User);
+        var farmer = await _context.Farmers.FirstOrDefaultAsync(f => f.Email == user.Email);
+        if (farmer == null || product.FarmerId != farmer.Id)
+            return Unauthorized();
+
+        return View(product);
+    }
+
+    // POST: Farmer/EditProduct/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> EditProduct(int id, Product updatedProduct)
+    {
+        if (id != updatedProduct.Id)
+            return NotFound();
+
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var farmer = await _context.Farmers.FirstOrDefaultAsync(f => f.Email == user.Email);
+                if (farmer == null || updatedProduct.FarmerId != farmer.Id)
+                    return Unauthorized();
+
+                _context.Update(updatedProduct);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Products));
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Products.Any(p => p.Id == updatedProduct.Id))
+                    return NotFound();
+                throw;
+            }
+        }
+        return View(updatedProduct);
+    }
+
+    // GET: Farmer/DeleteProduct/5
+    public async Task<IActionResult> DeleteProduct(int? id)
+    {
+        if (id == null) return NotFound();
+
+        var product = await _context.Products
+            .Include(p => p.Farmer)
+            .FirstOrDefaultAsync(p => p.Id == id);
+
+        if (product == null) return NotFound();
+
+        return View(product);
+    }
+
+    // POST: Farmer/DeleteProductConfirmed/5
+    [HttpPost, ActionName("DeleteProductConfirmed")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteProductConfirmed(int id)
+    {
+        var product = await _context.Products.FindAsync(id);
+        if (product == null) return NotFound();
+
+        _context.Products.Remove(product);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Products));
+    }
 }
