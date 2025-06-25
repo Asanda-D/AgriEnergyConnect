@@ -8,7 +8,7 @@ It helps streamline the management of agricultural products and farmer profiles 
 ## Demo Video
 
 Watch the full demonstration on YouTube:  
-- [AgriEnergyConnect - YouTube Demo](https://www.youtube.com/watch?v=YOUR_VIDEO_LINK_HERE)
+- https://youtu.be/1vQrhUrhPJ0?si=0BNB4zPKjQ-G0s9a
 
 ---
 
