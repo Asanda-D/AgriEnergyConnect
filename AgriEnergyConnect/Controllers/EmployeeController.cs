@@ -88,48 +88,6 @@ public class EmployeeController : Controller
         return View(model);
     }
 
-    // GET: Employee/DeleteFarmer/5
-    public async Task<IActionResult> DeleteFarmer(int? id)
-    {
-        if (id == null)
-            return NotFound();
-
-        var farmer = await _context.Farmers.FirstOrDefaultAsync(f => f.Id == id);
-
-        if (farmer == null)
-            return NotFound();
-
-        return View(farmer);
-    }
-
-    // POST: Employee/DeleteFarmer/5
-    [HttpPost, ActionName("DeleteFarmer")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteFarmerConfirmed(int id)
-    {
-        var farmer = await _context.Farmers.FindAsync(id);
-        if (farmer == null)
-            return NotFound();
-
-        // Find the corresponding IdentityUser by email
-        var user = await _userManager.FindByEmailAsync(farmer.Email);
-        if (user != null)
-        {
-            var result = await _userManager.DeleteAsync(user);
-            if (!result.Succeeded)
-            {
-                // Handle error if needed
-                ModelState.AddModelError("", "Failed to delete user from Identity.");
-                return View(farmer);
-            }
-        }
-
-        _context.Farmers.Remove(farmer);
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Farmers));
-    }
-
     // GET: Employee/ViewProducts
     public async Task<IActionResult> ViewProducts(int? farmerId, string nameFilter, string categoryFilter, DateTime? fromDate, DateTime? toDate)
     {
@@ -209,5 +167,47 @@ public class EmployeeController : Controller
             }
         }
         return View(updatedFarmer);
+    }
+
+    // GET: Employee/DeleteFarmer/5
+    public async Task<IActionResult> DeleteFarmer(int? id)
+    {
+        if (id == null)
+            return NotFound();
+
+        var farmer = await _context.Farmers.FirstOrDefaultAsync(f => f.Id == id);
+
+        if (farmer == null)
+            return NotFound();
+
+        return View(farmer);
+    }
+
+    // POST: Employee/DeleteFarmer/5
+    [HttpPost, ActionName("DeleteFarmerConfirmed")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteFarmerConfirmed(int id)
+    {
+        var farmer = await _context.Farmers.FindAsync(id);
+        if (farmer == null)
+            return NotFound();
+
+        // Find the corresponding IdentityUser by email
+        var user = await _userManager.FindByEmailAsync(farmer.Email);
+        if (user != null)
+        {
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                // Handle error if needed
+                ModelState.AddModelError("", "Failed to delete user from Identity.");
+                return View(farmer);
+            }
+        }
+
+        _context.Farmers.Remove(farmer);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Farmers));
     }
 }
