@@ -1,6 +1,7 @@
 # 🌾 AgriEnergyConnect
 
-**AgriEnergyConnect** is a web-based prototype designed to connect farmers and agricultural employees in a simple, secure, and efficient platform. It helps streamline the management of agricultural products and farmer profiles within a user-friendly web application built using ASP.NET Core MVC.
+**AgriEnergyConnect** is a web-based prototype designed to connect farmers and agricultural employees in a simple, secure, and efficient platform. 
+It helps streamline the management of agricultural products and farmer profiles within a user-friendly web application built using ASP.NET Core MVC.
 
 ---
 
@@ -27,7 +28,8 @@ Follow these steps to set up and run the application:
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/your-username/AgriEnergyConnect.git
-   cd AgriEnergyConnect```bash
+   cd AgriEnergyConnect
+   ```
 
 2. **Open the Project in Visual Studio**
 
@@ -38,13 +40,17 @@ Follow these steps to set up and run the application:
 - Visual Studio should automatically restore all dependencies on load.
 - Or manually from the Package Manager Console:
 
-```bash dotnet restore```
+```bash 
+dotnet restore
+```
 
 4. **Apply Database Migrations**
 
 - Open Package Manager Console and run:
 
-```bash Update-Database```
+```bash 
+Update-Database
+```
 
 This will apply Entity Framework Core migrations and create the database schema.
 
@@ -113,21 +119,36 @@ AgriEnergyConnect supports two user roles with specific permissions:
 
 ```bash
 AgriEnergyConnect/
+├── Area\Identity\Pages/
+│   ├── Account/
+│   │   ├── Login.cshtml
+│   │   ├── Login.cshtml.cs
+│   │   ├── Register.cshtml
+│   │   ├── Register.cshtml.cs
+│   │   └── RegisterViewModel.cs
+│   └──
+├── Bin/
 ├── Controllers/
-│   ├── FarmerController.cs
 │   ├── EmployeeController.cs
-│   └── HomeController.cs
+│   ├── FarmerController.cs
+│   ├── HomeController.cs
+│   └── ProductController.cs
+├── Data/
+│   └── ApplicationDbContext.cs
+├── Migrations/
 ├── Models/
-│   ├── Product.cs
+│   ├── ErrorViewModel.cs
 │   ├── Farmer.cs
-│   └── FarmerViewModel.cs
+│   ├── FarmerViewModel.cs
+│   └── Product.cs
 ├── Views/
-│   ├── Farmer/
 │   ├── Employee/
-│   ├── Shared/
-│   └── Home/
+│   ├── Farmer/
+│   ├── Home/
+│   └── Shared/
 ├── wwwroot/
 │   ├── css/
+│   ├── js/
 │   └── lib/
 └── appsettings.json
 ```
